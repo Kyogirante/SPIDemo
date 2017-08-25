@@ -1,4 +1,4 @@
-package com.spi.demo;
+package com.spi.demo.jspi;
 
 /**
  * @author KyoWang

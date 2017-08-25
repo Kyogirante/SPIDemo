@@ -1,13 +1,13 @@
-package com.spi.demo;
+package com.spi.demo.jspi;
 
 /**
  * @author KyoWang
  * @since 2017/05/09
  */
 
-public class AService implements IService {
+public class CService implements IService {
     @Override
     public boolean keep() {
-        return false;
+        return true;
     }
 }
