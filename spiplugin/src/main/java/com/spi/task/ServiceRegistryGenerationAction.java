@@ -27,8 +27,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
 import java.util.StringTokenizer;
 import java.util.jar.JarEntry;
@@ -227,6 +229,7 @@ class ServiceRegistryGenerationAction {
             }
         });
 
+//        Set<String> elementAdded = new LinkedHashSet<>();
         if (null != spis && spis.length > 0) {
             for (final File spi : spis) {
                 final List<SpiElement> elements = new ArrayList<SpiElement>();
@@ -253,6 +256,12 @@ class ServiceRegistryGenerationAction {
                 Collections.sort(elements); // sort by priority asc
 
                 for (final SpiElement se : elements) {
+//                    String elementsKey = spi.getName() + se.name;
+//                    if (elementAdded.contains(elementsKey)) {
+//                        continue;
+//                    } else {
+//                        elementAdded.add(elementsKey);
+//                    }
                     cinitBuilder.addStatement("register($L, $L)", spi.getName() + ".class", se.name + ".class");
                 }
             }
@@ -281,9 +290,11 @@ class ServiceRegistryGenerationAction {
             final String serviceName = cmv.getValue();
             final File spi = new File(this.serviceDir, serviceName);
 
-            if (!spi.exists()) {
-                spi.createNewFile();
+            if (spi.exists()) {
+                spi.delete();
             }
+
+            spi.createNewFile();
 
             final PrintWriter out = new PrintWriter(new FileWriter(spi, true));
             out.printf("%s %d", cc.getName(), priorityValue).println();

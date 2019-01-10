@@ -8,7 +8,7 @@ dependencies {
 }
 
 group = 'com.spi.demo'
-version = '2.0-SNAPSHOT'
+version = '1.0-SNAPSHOT'
 
 uploadArchives {
     repositories {

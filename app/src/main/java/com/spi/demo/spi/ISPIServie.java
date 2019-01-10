@@ -5,5 +5,8 @@ package com.spi.demo.spi;
  * @since 2017/08/25
  */
 
-public class IInterface {
+public interface ISPIServie {
+
+    void printInfo();
+
 }

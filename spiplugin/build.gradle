@@ -2,6 +2,27 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
+buildscript {
+    repositories {
+        maven {
+            url uri('../repo')
+        }
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+}
+
+repositories {
+    repositories {
+        maven {
+            url uri('../repo')
+        }
+        jcenter()
+        mavenCentral()
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -10,12 +31,12 @@ dependencies {
 
     compile 'org.javassist:javassist:3.18.2-GA'
     compile 'com.squareup:javapoet:1.7.0'
-    compile project(':loader')
-    compile project(':service')
+    compile 'com.spi.loader:loader:3.0-SNAPSHOT'
+//    compile project(':loader')
 }
 
-group = 'com.spi.demo.spiplugin'
-version = '1.0-SNAPSHOT'
+group = 'com.spi.demo'
+version = '10.0-SNAPSHOT'
 
 uploadArchives {
     repositories {

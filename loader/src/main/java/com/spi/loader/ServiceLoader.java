@@ -1,6 +1,6 @@
 package com.spi.loader;
 
-import com.spi.registry.ServiceRegistry;
+import com.spi.loader.ServiceRegistry;
 
 import java.util.Collections;
 import java.util.Iterator;

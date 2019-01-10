@@ -1,4 +1,4 @@
-package com.spi.registry;
+package com.spi.loader;
 
 import java.util.Set;
 

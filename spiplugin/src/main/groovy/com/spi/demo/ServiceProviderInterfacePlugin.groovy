@@ -1,6 +1,6 @@
-package com.spi.gradle
+package com.spi.demo
 
-import com.didichuxing.foundation.spi.gradle.task.ServiceRegistryGenerationTask
+import com.spi.task.ServiceRegistryGenerationTask
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -14,7 +14,8 @@ public class ServiceProviderInterfacePlugin implements Plugin<Project> {
     @Override
     void apply(final Project project) {
         project.dependencies {
-            compile 'com.didichuxing.foundation:spi-loader:0.0.5'
+            compile 'com.spi.loader:loader:3.0-SNAPSHOT'
+//            compule project(':loader')
         }
 
         project.afterEvaluate {

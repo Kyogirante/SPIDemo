@@ -1,1 +1,4 @@
-include ':app', ':plugin', ':service', ':annotations', ':loader', ':registry', ':spiplugin'
+include ':app', ':annotations', ':loader', ':registry', ':spiplugin'
+
+//include ':plugin'
+//include ':service'

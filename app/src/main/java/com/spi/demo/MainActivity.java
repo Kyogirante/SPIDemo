@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.spi.demo.jspi.IService;
+import com.spi.demo.spi.ISPIServie;
 
 import java.util.Iterator;
 import java.util.ServiceLoader;
@@ -13,13 +14,14 @@ import java.util.ServiceLoader;
 public class MainActivity extends AppCompatActivity {
 
     private View mBtn;
+    private View mSPIBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBtn = findViewById(R.id.spi_deom_btn);
+        mBtn = findViewById(R.id.jspi_demo_btn);
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Toast.makeText(MainActivity.this, "Keep location : " + isKeepLoc, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mSPIBtn = findViewById(R.id.spi_demo_btn);
+        mSPIBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              com.spi.loader.ServiceLoader loader = com.spi.loader.ServiceLoader.load(ISPIServie.class);
+              Iterator<ISPIServie> iterator = loader.iterator();
+
+              while (iterator.hasNext()) {
+                iterator.next().printInfo();
+              }
             }
         });
     }
