@@ -24,19 +24,18 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile gradleApi()
-    compile localGroovy()
+    implementation gradleApi()
+    implementation localGroovy()
 
-    compile 'org.javassist:javassist:3.18.2-GA'
-    compile 'com.squareup:javapoet:1.7.0'
-    compile 'com.spi.loader:loader:3.0-SNAPSHOT'
-//    compile project(':loader')
+    implementation 'org.javassist:javassist:3.18.2-GA'
+    implementation 'com.squareup:javapoet:1.7.0'
+    implementation 'com.spi.loader:loader:3.0-SNAPSHOT'
 }
 
-group = 'com.spi.demo'
-version = '12.0-SNAPSHOT'
+group = 'com.spi.plugin'
+version = '1.0-SNAPSHOT'
 
 uploadArchives {
     repositories {

@@ -1,0 +1,10 @@
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = BINTRAY_NAME
+    groupId = GROUO_ID
+    artifactId = ARTIFACTI_ID
+    publishVersion = VERSION
+    desc = DESC
+    website = WEBSITE
+}

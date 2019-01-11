@@ -1,4 +1,4 @@
-package com.spi.demo
+package com.spi.plugin
 
 import com.spi.task.ServiceRegistryGenerationTask
 import org.gradle.api.GradleException

@@ -6,18 +6,19 @@ repositories {
         maven {
             url uri('../repo')
         }
+        maven {
+            url 'https://dl.bintray.com/kyo/maven'
+        }
         jcenter()
         mavenCentral()
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.spi.loader:annotations:1.0-SNAPSHOT'
-    compileOnly 'com.spi.loader:registry:2.0-SNAPSHOT'
-//    compile project(':registry')
-//    compile project(':annotations')
+    implementation 'com.spi.loader:annotations:0.0.1'
+    compileOnly 'com.spi.loader:registry:0.0.1'
 }
 
 sourceCompatibility = "1.7"
