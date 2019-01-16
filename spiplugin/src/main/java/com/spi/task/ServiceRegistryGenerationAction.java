@@ -152,6 +152,9 @@ class ServiceRegistryGenerationAction {
 
     public boolean execute() {
         try {
+
+            deleteTempFile(this.serviceDir);
+
             final List<CtClass> classes = loadClasses();
             if (null == classes || classes.isEmpty()) {
                 System.out.println("No class found");
@@ -229,7 +232,6 @@ class ServiceRegistryGenerationAction {
             }
         });
 
-        Set<String> elementAdded = new LinkedHashSet<>();
         if (null != spis && spis.length > 0) {
             for (final File spi : spis) {
                 final List<SpiElement> elements = new ArrayList<SpiElement>();
@@ -256,12 +258,6 @@ class ServiceRegistryGenerationAction {
                 Collections.sort(elements); // sort by priority asc
 
                 for (final SpiElement se : elements) {
-                    String elementsKey = spi.getName() + se.name;
-                    if (elementAdded.contains(elementsKey)) {
-                        continue;
-                    } else {
-                        elementAdded.add(elementsKey);
-                    }
                     cinitBuilder.addStatement("register($L, $L)", spi.getName() + ".class", se.name + ".class");
                 }
             }
@@ -345,6 +341,20 @@ class ServiceRegistryGenerationAction {
             } catch (final NumberFormatException e) {
                 return 0;
             }
+        }
+    }
+
+    private void deleteTempFile(File dir) {
+        if (!dir.exists()) {
+            return;
+        }
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i=0; i<children.length; i++) {
+                deleteTempFile(new File(dir, children[i]));
+            }
+        } else {
+            dir.delete();
         }
     }
 }
