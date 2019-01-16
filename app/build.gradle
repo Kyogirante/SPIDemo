@@ -4,14 +4,14 @@ apply plugin: 'com.spi.plugin'
 buildscript {
     repositories {
         maven {
-            url uri('../repo')
+            url 'https://dl.bintray.com/kyo/maven'
         }
         jcenter()
         mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.spi.plugin:spiplugin:1.0-SNAPSHOT'
+        classpath 'com.spi.plugin:spiplugin:0.0.1'
     }
 }
 

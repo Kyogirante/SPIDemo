@@ -14,14 +14,13 @@ public class ServiceProviderInterfacePlugin implements Plugin<Project> {
     @Override
     void apply(final Project project) {
         project.dependencies {
-            compile 'com.spi.loader:loader:3.0-SNAPSHOT'
-//            compule project(':loader')
+            implementation 'com.spi.loader:loader:0.0.1'
         }
 
         project.afterEvaluate {
             try {
                 if (!project.plugins.hasPlugin(Class.forName('com.android.build.gradle.AppPlugin'))) {
-                    return;
+                    return
                 }
             } catch (final ClassNotFoundException e) {
                 throw new GradleException("Android gradle plugin is required", e)

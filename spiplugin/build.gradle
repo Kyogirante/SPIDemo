@@ -1,12 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'maven'
+apply from: rootProject.file('upload.gradle')
 
 buildscript {
     repositories {
-        maven {
-            url uri('../repo')
-        }
         mavenLocal()
         mavenCentral()
         jcenter()
@@ -15,9 +13,6 @@ buildscript {
 
 repositories {
     repositories {
-        maven {
-            url uri('../repo')
-        }
         jcenter()
         mavenCentral()
     }
@@ -31,18 +26,7 @@ dependencies {
 
     implementation 'org.javassist:javassist:3.18.2-GA'
     implementation 'com.squareup:javapoet:1.7.0'
-    implementation 'com.spi.loader:loader:3.0-SNAPSHOT'
-}
-
-group = 'com.spi.plugin'
-version = '1.0-SNAPSHOT'
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: uri('../repo'))
-        }
-    }
+    implementation 'com.spi.loader:loader:0.0.1'
 }
 
 sourceCompatibility = "1.7"
