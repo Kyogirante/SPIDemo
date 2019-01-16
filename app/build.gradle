@@ -8,7 +8,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.spi.plugin:spiplugin:0.0.1'
+        classpath 'com.spi.plugin:spiplugin:0.0.2'
     }
 }
 
